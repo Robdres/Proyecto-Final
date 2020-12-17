@@ -23,6 +23,7 @@ void MainWindow::on_pushButton_clicked()
         as.show();//admin screen
     } else {
         //verificar los datos del estudiante antes de pasar a la segunda pantalla
+        sp.startSystem(ui->plainTextEdit->toPlainText().toStdString(), ui->plainTextEdit_2->toPlainText().toStdString());
         sp.show();
     }
     close();

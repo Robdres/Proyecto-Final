@@ -9,7 +9,7 @@ UserManager::UserManager(FacultyManager* _facultyManager, StudentManager* _stude
 
 User* UserManager::validateCredentials(std::string userName, std::string contrasenia){
 
-
+    std::cout << "validando credenciales" << std::endl;
 	std::deque<Student*> estudiantes=sm->getAllStudents();
 	std::deque<Faculty> profesores=fm->getAllFaculty();
 
