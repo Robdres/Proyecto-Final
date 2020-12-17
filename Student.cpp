@@ -21,8 +21,8 @@ void Student::setCarrera(std::string _carrera){
     carrera = _carrera;
 }
 
-void Student::addClass(Course* curso){
-    this->clases.add(*curso);
+void Student::addClass(Course curso){
+    this->clases.add(curso);
 }
 
 float Student::getGPA(){

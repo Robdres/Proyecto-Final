@@ -3,61 +3,45 @@
 
 
 void CourseManager::loadCourses(){
+    std::ifstream input_cursos;
+    int totalCursos;
+    std::string nrc;
+    int totalCreditos;
+    std::string bannerIDFaculty;
+    std::string path_estudiantes;
 
-    std::ifstream input;
-    input.open(this->pathCursos);
-    input>>numCursos;
+    std::ifstream input_detalleClase;
+    int totalEstudiantesEnLaClase;
+    std::string bannerIDEstudiante;
+    float calificacionEstudiante;
 
-    if (input.is_open()){
-        for(int i=0;i<this->numCursos;i++){
-
-            std::string nrcAux,profeAux,pathAux;
-            int creditosAux;
-            Faculty* profesor;
-
-            input>>nrcAux>>creditosAux>>profeAux>>pathAux;
-
-            Course* cursoAux;
-            cursoAux= new Course();
-            cursoAux->setNRC(nrcAux);
-            cursoAux->setCreditos(creditosAux);
-            cursos.add(cursoAux);
-            cursos[i]->setPath(pathAux);
-
-            profesor=fm->getFacultyByID(profeAux);
-            cursos[i]->setProfesor(profesor);
-            
-            
-            std::ifstream fileEst;    
-            int numberEst;
-
-            std::string pathEstudiantes="C:\\Users\\josei\\Documents\\GitHub\\build-Proyecto-Final-Desktop_Qt_5_15_2_MinGW_64_bit-Debug\\debug\\data\\"+cursos[i]->getPath();
-        
-            fileEst.open(pathEstudiantes);
-            fileEst>>numberEst;
-            if(fileEst.is_open()){
-                for(int j=0;j<numberEst;j++){
-
-                    std::string BannerIDAux;
-                    float notaAux;
-                    
-                    Grade nota;
-
-                    fileEst>>BannerIDAux>>notaAux;
-                  
-                    nota=Grade(notaAux);
-                    cursos[i]->addStudentGrade(sm->getStudentByID(BannerIDAux),nota);
+    input_cursos.open(this->pathCursos);
+    if(input_cursos.is_open()){
+        input_cursos >> totalCursos;
+        for(int i=0; i<totalCursos; i++){
+            input_cursos >> nrc >> totalCreditos >> bannerIDFaculty >> path_estudiantes;
+            Course *curso_actual = new Course(nrc, totalCreditos);
+            Faculty* profesor = this->fm->getFacultyByID(bannerIDFaculty);
+            curso_actual->setProfesor(profesor);
+            profesor->addClass(curso_actual);
+            input_detalleClase.open(path_estudiantes);
+            this->cursos.add(curso_actual);
+            if(input_detalleClase.is_open()){
+                input_detalleClase >> totalEstudiantesEnLaClase;
+                for(int j=0; j<totalEstudiantesEnLaClase; j++){
+                    input_detalleClase >> bannerIDEstudiante >> calificacionEstudiante;
+                    Student *estudiante = this->sm->getStudentByID(bannerIDEstudiante);
+                    Grade nota(calificacionEstudiante);
+                    curso_actual->addStudentGrade(estudiante, nota);
+                    estudiante->addClass(*curso_actual);
                 }
-            }else{
-                std::cout<<"Revisar Path en CourseManager"<<std::endl;
-                throw FileNotFound();
             }
-            
-            fileEst.close();
-
+            input_detalleClase.close();
         }
-        input.close();
-    } else { throw FileNotFound();}
+        input_cursos.close();
+        return;
+    }
+    throw FileNotFound();
 };
 
 void CourseManager::updateCourses(){

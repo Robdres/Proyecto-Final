@@ -31,7 +31,7 @@ public:
     Student(std::string, std::string, std::string, std::string, std::string, std::string);
     void setCarrera(std::string);
     void calculateGPA();
-    void addClass(Course*);
+    void addClass(Course);
     std::string getCarrera();
     ArrayList<Course> getClases();
     float getGPA();
