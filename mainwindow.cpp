@@ -17,6 +17,11 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_clicked()
 {
-    sp.show();
+    if (ui->plainTextEdit->toPlainText() == "admin" && ui->plainTextEdit_2->toPlainText() == "admin"){
+        as.show();//admin screen
+    } else {
+        //verificar los datos del estudiante antes de pasar a la segunda pantalla
+        sp.show();
+    }
     close();
 }

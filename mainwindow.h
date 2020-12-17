@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "segundapantalla.h"
+#include "adminscreen.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -15,6 +16,7 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     SegundaPantalla sp;
+    AdminScreen as;
 private slots:
     void on_pushButton_clicked();
 
