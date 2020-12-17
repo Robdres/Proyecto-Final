@@ -38,7 +38,7 @@ void FacultyManager::updateFaculty(){
     ofstream output(this->pathFaculty);
     if (output.is_open()) {
         output << profesores.size() << endl;
-        for (int i = 0; i < profesores.size() ; i++) {
+        for (unsigned int i = 0; i < profesores.size() ; i++) {
             output << profesores[i].getBannerID() << "\t" << profesores[i].getNombre() << "\t" << profesores[i].getApellido() << "\t" << profesores[i].getUsuario()<< "\t" << profesores[i].getContrasenia() << "\t" << profesores[i].getCarrera() << endl;
         }
     } else {
@@ -64,7 +64,7 @@ void FacultyManager::createNewFaculty(UserManager* um){
 };
 
 Faculty* FacultyManager::getFacultyByID(string BannerID){
-    for(int i = 0; i < profesores.size(); i ++){
+    for(unsigned int i = 0; i < profesores.size(); i ++){
         if(profesores[i].getBannerID() == BannerID){
             return &profesores[i];
         }
@@ -131,7 +131,7 @@ void FacultyManager::editFaculty(string bid){
 };
 
 void FacultyManager::showFaculty(string BannerId){
-    for (int i = 0; i < profesores.size(); i ++)  {
+    for (unsigned int i = 0; i < profesores.size(); i ++)  {
         if (profesores[i].getBannerID() == BannerId) {
             cout << profesores[i].to_string() << endl;
         }

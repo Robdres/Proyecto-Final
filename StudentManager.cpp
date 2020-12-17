@@ -172,8 +172,6 @@ deque<Student*> StudentManager::getAllStudents(){
 
 void StudentManager::editStudent(){// sobrecarga para no mandarle nada por si acaso se necesita
     string _bannerId = consoleInput<string>("Banner ID del estudiante que quiere editar:");
-    Student* Edit{0};//estudiante para editar
-    bool found = false;
     //encontrar el estudiante con ese bannerID
     for(auto &estud: estudiantes) {
         if (estud->getBannerID() == _bannerId){
@@ -208,8 +206,6 @@ void StudentManager::editStudent(){// sobrecarga para no mandarle nada por si ac
 
 void StudentManager::editStudent(string bid){ //sobrecarga para mandarle el banner ID, facilita la interfaz
     string _bannerId = bid;
-    Student* Edit{0};//estudiante para editar
-    bool found = false;
     //encontrar el estudiante con ese bannerID
     for(auto &estud: estudiantes) {
         if (estud->getBannerID() == _bannerId){
@@ -244,8 +240,6 @@ void StudentManager::editStudent(string bid){ //sobrecarga para mandarle el bann
 
 void StudentManager::editStudent(Student* stud){//sobrecarga a la que se le pasa un student*
     string _bannerId = stud->getBannerID();
-    Student* Edit{0};//estudiante para editar
-    bool found = false;
     //encontrar el estudiante con ese bannerID
     for(auto &estud: estudiantes) {
         if (estud->getBannerID() == _bannerId){
@@ -328,6 +322,7 @@ string StudentManager::generateReport(string bannerId){
                 report = report + clases[i].getNRC() + " " + clases[i].getGradeByStudent(bannerId)->getLetra() + to_string(clases[i].getGradeByStudent(bannerId)->getNota()) + "\n";
             }
             GPA = sumaValores / totalCreditos;
+            report += to_string(GPA);
             return report;
         }
 

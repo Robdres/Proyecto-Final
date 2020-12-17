@@ -141,7 +141,7 @@ public:
         }else{
             if(index+1 <= size){
                 NodeD<T> *node = first;
-                for(int i=0; i!=index; i++){
+                for(unsigned int i=0; i!=index; i++){
                     node = node->getNextNode();
                 }
                 return node->getValue();

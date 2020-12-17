@@ -85,3 +85,4 @@ std::string Course::to_string(){
 
     return nrc+"\t"+std::to_string(totalCreditos)+" "+this->profesor->getNombre()+" "+this->profesor->getApellido();;
 }
+

@@ -109,7 +109,7 @@ void Interfaz::pantalla1_1(){
         std::cin>>banner;
         
 
-        for(int i=0;i<estudiantes.size();i++){
+        for(unsigned int i=0;i<estudiantes.size();i++){
             
             if(banner==estudiantes[i]->getBannerID()){
         
@@ -119,7 +119,7 @@ void Interfaz::pantalla1_1(){
             }
 
         }
-        for(int i=0;i<profesores.size();i++){
+        for(unsigned int i=0;i<profesores.size();i++){
             
             if(banner==profesores[i].getBannerID()){
         

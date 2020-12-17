@@ -50,7 +50,6 @@ public:
     std::string getNRC();
     
     void setPath(std::string);
-    int getValue();
     std::string getPath();
 
     std::string to_string();

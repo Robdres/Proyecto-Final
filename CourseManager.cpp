@@ -7,8 +7,7 @@ void CourseManager::loadCourses(){
     std::ifstream input;
     input.open(this->pathCursos);
     input>>numCursos;
-    ArrayList<Course*> cursosAux=cursos;
-    
+
     if (input.is_open()){
         for(int i=0;i<this->numCursos;i++){
 
@@ -67,7 +66,7 @@ void CourseManager::updateCourses(){
     file.open(pathCursos,std::ofstream::out | std::ofstream::trunc);
     file<<cursos.getSize()<<"\n";
 
-    for(int i=0;i<cursos.getSize();i++){
+    for(unsigned int i=0;i<cursos.getSize();i++){
         file<<cursos[i]->getNRC()<<" "<<cursos[i]->getCreditos()<<" "<<cursos[i]->getProfesor()->getBannerID()<<" "<<cursos[i]->getPath()<<std::endl;
     }
 
@@ -200,7 +199,7 @@ void CourseManager::showCourses(){
 
 void CourseManager::showClassByID(std::string nrc){
 
-    for(int i=0;i<cursos.getSize();i++){
+    for(unsigned int i=0;i<cursos.getSize();i++){
         if(cursos[i]->getNRC()==nrc){
 
             std::cout<<"NRC"<<std::setw(12)<<"Creditos"<<std::setw(10)<<"Profesor"<<std::endl;
@@ -208,7 +207,7 @@ void CourseManager::showClassByID(std::string nrc){
             std::cout<<"Estudiantes:"<<std::endl;
             std::deque<Student*> stu=cursos[i]->getAllStudents();
 
-            for(int j=0;j<stu.size();j++){
+            for(unsigned int j=0;j<stu.size();j++){
                 std::cout<<stu[j]->to_string()<<std::endl;
             }
             return;
@@ -221,7 +220,7 @@ void CourseManager::showClassByID(std::string nrc){
 
 void CourseManager::deleteCourse(std::string nrc){
 
-    for(int i=0;i<cursos.getSize();i++){
+    for(unsigned int i=0;i<cursos.getSize();i++){
 
         if(cursos[i]->getNRC()==nrc){
 
