@@ -21,6 +21,7 @@ public:
     void setNota(float);
     float getNota();
     char getLetra();
+    int getValue();
 };
 
 #endif /* Grade_hpp */

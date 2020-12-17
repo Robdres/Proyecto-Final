@@ -8,6 +8,7 @@
 
 #include "Course.hpp"
 #include <iostream>
+#include "Exceptions.hpp"
 
 Course::Course(){ }
 
@@ -25,9 +26,17 @@ Grade* Course::getGradeByStudent(Student * estudiante){
             return &notas[i];
         }
     }
-    return nullptr;
+    throw BannerIDNotFound();
 }
 
+Grade* Course::getGradeByStudent(std::string bannerId){
+    for(int i=0; i<totalEstudiantes; i++){
+        if(estudiantes[i]->getBannerID() == bannerId){
+            return &notas[i];
+        }
+    }
+    throw BannerIDNotFound();
+}
 
 std::deque<Student*> Course::getAllStudents(){
     return this->estudiantes;

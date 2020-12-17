@@ -35,6 +35,7 @@ public:
 
     void addStudentGrade(Student*,Grade);
     Grade *getGradeByStudent(Student*);
+    Grade *getGradeByStudent(std::string);
 
     std::deque<Student*> getAllStudents();
     std::deque<Grade> getAllGrades();
@@ -49,6 +50,7 @@ public:
     std::string getNRC();
     
     void setPath(std::string);
+    int getValue();
     std::string getPath();
 
     std::string to_string();

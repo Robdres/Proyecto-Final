@@ -36,6 +36,7 @@ public:
     void showStudent(std::string);
     void showStudent(Student*);
     void deleteStudent(std::string);
+    std::string generateReport(std::string);
 };
 
 #endif /* StudentManager_hpp */

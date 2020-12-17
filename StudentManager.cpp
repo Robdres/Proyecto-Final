@@ -313,3 +313,24 @@ void StudentManager::showStudent(Student* estud) {//para que no se le dañe lo q
     cout << estud->to_string() << endl;
 } //<3 
 
+string StudentManager::generateReport(string bannerId){
+    string report = "";
+    int totalCreditos{0};
+    int sumaValores{0};
+    float GPA{0};
+    for (auto e : estudiantes){
+        if (e->getBannerID() == bannerId){
+            report = report + e->getNombre() + " " + e->getApellido() + "\n";
+            ArrayList<Course> clases = e->getClases();
+            for (unsigned int i = 0; i < clases.getSize(); i ++){
+                totalCreditos += clases[i].getCreditos();
+                sumaValores += clases[i].getGradeByStudent(bannerId)->getValue() * clases[i].getCreditos();
+                report = report + clases[i].getNRC() + " " + clases[i].getGradeByStudent(bannerId)->getLetra() + to_string(clases[i].getGradeByStudent(bannerId)->getNota()) + "\n";
+            }
+            GPA = sumaValores / totalCreditos;
+            return report;
+        }
+
+    }
+    throw BannerIDNotFound();
+}
