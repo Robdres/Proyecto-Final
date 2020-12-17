@@ -312,17 +312,15 @@ string StudentManager::generateReport(string bannerId){
     int totalCreditos{0};
     int sumaValores{0};
     float GPA{0};
-    for (auto e : estudiantes){
+    for (auto e : estudiantes){//como usé deque puedo usar esta sintaxis cool
         if (e->getBannerID() == bannerId){
             report = report + e->getNombre() + " " + e->getApellido() + "\n";
             ArrayList<Course*> clases = e->getClases();
             for (unsigned int i = 0; i < clases.getSize(); i ++){
                 totalCreditos += clases[i]->getCreditos();
-                cout << "creditos obtenidos" << endl;
                 sumaValores += clases[i]->getGradeByStudent(bannerId)->getValue() * clases[i]->getCreditos();
-                cout << "suma" << endl;
-                report = report + clases[i]->getNRC() + "\n" + clases[i]->getGradeByStudent(bannerId)->getLetra()+" " + to_string(clases[i]->getGradeByStudent(bannerId)->getNota()) + "\n";
-                cout << "nota obtenida" << endl;
+                report = report + clases[i]->getNRC() + "\t" + clases[i]->getGradeByStudent(bannerId)->getLetra()+"\t" + to_string(clases[i]->getGradeByStudent(bannerId)->getNota()) + "\n";
+                cout << clases[i]->to_string();
             }
             if (totalCreditos != 0)
             GPA = sumaValores / totalCreditos;

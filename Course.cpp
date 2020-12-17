@@ -21,7 +21,7 @@ void Course::addStudentGrade(Student* student,Grade *grade){
 }
 
 Grade* Course::getGradeByStudent(Student * estudiante){
-    for(int i=0; i<totalEstudiantes; i++){
+    for(unsigned int i=0; i< estudiantes.size(); i++){
         if(estudiantes[i]->getBannerID() == estudiante->getBannerID()){
             return notas[i];
         }
@@ -30,13 +30,14 @@ Grade* Course::getGradeByStudent(Student * estudiante){
 }
 
 Grade* Course::getGradeByStudent(std::string bannerId){
-    for(int i=0; i<totalEstudiantes; i++){
+    for(unsigned int i=0; i<estudiantes.size(); i++){
         if(estudiantes[i]->getBannerID() == bannerId){
             return notas[i];
         }
     }
     return new Grade(0);
 }
+
 
 std::deque<Student*> Course::getAllStudents(){
     return this->estudiantes;
@@ -83,6 +84,43 @@ void Course::setPath(std::string path_){
 
 std::string Course::to_string(){
 
-    return nrc+"\t"+std::to_string(totalCreditos)+" "+this->profesor->getNombre()+" "+this->profesor->getApellido();;
+    return nrc+"\t"+std::to_string(totalCreditos)+" "+this->profesor->getNombre()+" "+this->profesor->getApellido() + '\n';
 }
 
+int Course::getNotaMax(){
+    int notamax = 0;
+    for (auto grade : notas){
+        if (grade->getNota() > notamax){
+            notamax = grade->getNota();
+        }
+    }
+    return notamax;
+}
+
+int Course::getNotaMin(){
+    int notamin = 1000;
+    for (auto grade: notas){
+        if (grade->getNota() < notamin){
+            notamin = grade->getNota();
+        }
+    }
+    return notamin;
+}
+
+float Course::getDesvest(){
+    //calcular promedio
+    float suma = 0;
+    float promedio = 0;
+    for (auto grade : notas){
+        suma += grade->getNota();
+    }
+    if (notas.size() != 0)
+    promedio = suma / notas.size();
+    //calcular desvest:
+    float sumaCuadrados = 0;
+    for (auto grade : notas){
+        sumaCuadrados += (grade->getNota() - promedio) * (grade->getNota() - promedio);
+    }
+    float desvest = sqrt(sumaCuadrados/notas.size());
+    return desvest;
+}

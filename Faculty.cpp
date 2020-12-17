@@ -27,8 +27,7 @@ std::string Faculty::getCarrera(){
     return carrera;
 }
 
-ArrayList<Course*> Faculty::getCursos(int & _totalCursos){
-    _totalCursos = totalCursos;
+ArrayList<Course*> Faculty::getCursos(){
     return cursos;
 }
 

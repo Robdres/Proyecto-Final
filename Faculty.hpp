@@ -29,7 +29,7 @@ public:
     void setCarrera(std::string);
     void setCursos(ArrayList<Course*>, int);
     std::string getCarrera();
-    ArrayList<Course*> getCursos(int&);
+    ArrayList<Course*> getCursos();
     void addClass(Course*);
     std::string to_string() override;
 };

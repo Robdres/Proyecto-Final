@@ -29,6 +29,7 @@ public:
     void showAllFaculties();//no era necesario hacia mas facil debugear
     void deleteFaculty(std::string);//funciona
     void deleteFaculty();//sobrecarga
+    std::string generateReport(std::string);
 };
 
 #endif /* FacultyManager_hpp */

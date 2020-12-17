@@ -19,6 +19,7 @@ class Faculty;
 #include "Faculty.hpp"
 #include "Grade.hpp"
 #include <deque>
+#include <cmath>
 
 class Course{
 private:
@@ -36,7 +37,6 @@ public:
     void addStudentGrade(Student*,Grade*);
     Grade *getGradeByStudent(Student*);
     Grade *getGradeByStudent(std::string);
-
     std::deque<Student*> getAllStudents();
     std::deque<Grade*> getAllGrades();
 
@@ -53,6 +53,9 @@ public:
     std::string getPath();
 
     std::string to_string();
+    int getNotaMax();
+    int getNotaMin();
+    float getDesvest();
    
 };
 
