@@ -25,7 +25,7 @@ private:
     std::string nrc{"-1"};
     Faculty *profesor;
     std::deque<Student*> estudiantes;
-    std::deque<Grade> notas;
+    std::deque<Grade*> notas;
     int totalEstudiantes{0};
     int totalCreditos{0};
     std::string path{""};
@@ -33,12 +33,12 @@ public:
     Course();
     Course(std::string, int);
 
-    void addStudentGrade(Student*,Grade);
+    void addStudentGrade(Student*,Grade*);
     Grade *getGradeByStudent(Student*);
     Grade *getGradeByStudent(std::string);
 
     std::deque<Student*> getAllStudents();
-    std::deque<Grade> getAllGrades();
+    std::deque<Grade*> getAllGrades();
 
     void setProfesor(Faculty*);
     Faculty* getProfesor();

@@ -22,7 +22,7 @@ class Course;
 class Student : public User{
 private:
     std::string carrera;
-    ArrayList<Course> clases;
+    ArrayList<Course*> clases;
     int totalClases;
     float gpa{0};
 public:
@@ -31,9 +31,9 @@ public:
     Student(std::string, std::string, std::string, std::string, std::string, std::string);
     void setCarrera(std::string);
     void calculateGPA();
-    void addClass(Course);
+    void addClass(Course*);
     std::string getCarrera();
-    ArrayList<Course> getClases();
+    ArrayList<Course*> getClases();
     float getGPA();
     std::string to_string() override;
 };

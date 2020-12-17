@@ -315,19 +315,19 @@ string StudentManager::generateReport(string bannerId){
     for (auto e : estudiantes){
         if (e->getBannerID() == bannerId){
             report = report + e->getNombre() + " " + e->getApellido() + "\n";
-            ArrayList<Course> clases = e->getClases();
+            ArrayList<Course*> clases = e->getClases();
             for (unsigned int i = 0; i < clases.getSize(); i ++){
-                cout << "Antes de c" << endl;
-                totalCreditos += clases[i].getCreditos();
+                totalCreditos += clases[i]->getCreditos();
                 cout << "creditos obtenidos" << endl;
-                sumaValores += clases[i].getGradeByStudent(bannerId)->getValue() * clases[i].getCreditos();
+                sumaValores += clases[i]->getGradeByStudent(bannerId)->getValue() * clases[i]->getCreditos();
                 cout << "suma" << endl;
-                report = report + clases[i].getNRC() + " " + clases[i].getGradeByStudent(bannerId)->getLetra() + to_string(clases[i].getGradeByStudent(bannerId)->getNota()) + "\n";
+                report = report + clases[i]->getNRC() + "\n" + clases[i]->getGradeByStudent(bannerId)->getLetra()+" " + to_string(clases[i]->getGradeByStudent(bannerId)->getNota()) + "\n";
                 cout << "nota obtenida" << endl;
             }
             if (totalCreditos != 0)
             GPA = sumaValores / totalCreditos;
-            report += to_string(GPA);
+            report += "Creditos : " + to_string(totalCreditos) + "\n";
+            report += "GPA: " + to_string(GPA);
             return report;
         }
 

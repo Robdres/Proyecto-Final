@@ -15,7 +15,6 @@ SOURCES += \
     FacultyManager.cpp \
     Grade.cpp \
     GraduateStudent.cpp \
-    Interfaz.cpp \
     Proxy.cpp \
     Student.cpp \
     StudentManager.cpp \
@@ -37,7 +36,6 @@ HEADERS += \
     FacultyManager.hpp \
     Grade.hpp \
     GraduateStudent.hpp \
-    Interfaz.hpp \
     Proxy.hpp \
     Student.hpp \
     StudentManager.hpp \

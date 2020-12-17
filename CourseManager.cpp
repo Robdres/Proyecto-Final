@@ -24,6 +24,7 @@ void CourseManager::loadCourses(){
             Faculty* profesor = this->fm->getFacultyByID(bannerIDFaculty);
             curso_actual->setProfesor(profesor);
             profesor->addClass(curso_actual);
+            path_estudiantes = "C:\\Users\\josei\\Documents\\GitHub\\build-Proyecto-Final-Desktop_Qt_5_15_2_MinGW_64_bit-Debug\\debug\\data\\" + path_estudiantes ;
             input_detalleClase.open(path_estudiantes);
             this->cursos.add(curso_actual);
             if(input_detalleClase.is_open()){
@@ -31,10 +32,13 @@ void CourseManager::loadCourses(){
                 for(int j=0; j<totalEstudiantesEnLaClase; j++){
                     input_detalleClase >> bannerIDEstudiante >> calificacionEstudiante;
                     Student *estudiante = this->sm->getStudentByID(bannerIDEstudiante);
-                    Grade nota(calificacionEstudiante);
+                    Grade *nota = new Grade(calificacionEstudiante);
                     curso_actual->addStudentGrade(estudiante, nota);
-                    estudiante->addClass(*curso_actual);
+                    estudiante->addClass(curso_actual);
                 }
+            } else {
+                std::cout << "No se pudo abrir detalle estudiantes" << std::endl;
+                throw FileNotFound();
             }
             input_detalleClase.close();
         }

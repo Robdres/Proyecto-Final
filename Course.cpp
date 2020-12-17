@@ -15,7 +15,7 @@ Course::Course(){ }
 Course::Course(std::string _nrc, int totalCreditos):nrc(_nrc),totalCreditos(totalCreditos){
 }
 
-void Course::addStudentGrade(Student* student,Grade grade){
+void Course::addStudentGrade(Student* student,Grade *grade){
     this->estudiantes.push_back(student);
     notas.push_back(grade);
 }
@@ -23,26 +23,26 @@ void Course::addStudentGrade(Student* student,Grade grade){
 Grade* Course::getGradeByStudent(Student * estudiante){
     for(int i=0; i<totalEstudiantes; i++){
         if(estudiantes[i]->getBannerID() == estudiante->getBannerID()){
-            return &notas[i];
+            return notas[i];
         }
     }
-    throw BannerIDNotFound();
+    return new Grade(0);
 }
 
 Grade* Course::getGradeByStudent(std::string bannerId){
     for(int i=0; i<totalEstudiantes; i++){
         if(estudiantes[i]->getBannerID() == bannerId){
-            return &notas[i];
+            return notas[i];
         }
     }
-    throw BannerIDNotFound();
+    return new Grade(0);
 }
 
 std::deque<Student*> Course::getAllStudents(){
     return this->estudiantes;
 }
 
-std::deque<Grade> Course::getAllGrades(){
+std::deque<Grade*> Course::getAllGrades(){
     return this->notas;
 }
 
