@@ -22,6 +22,7 @@ private:
     FacultyManager* fm;
 public:
     UserManager(FacultyManager*, StudentManager*);
+    UserManager(){};
     User* validateCredentials(std::string, std::string);
     void editUser(User*);
     void showUser(User*);

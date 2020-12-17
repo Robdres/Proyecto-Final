@@ -30,6 +30,7 @@ private:
     void updateCourses();
 public:
     CourseManager(std::string,StudentManager*, FacultyManager*);
+    CourseManager(){};
     void createNewCourse();
     void editCourse();
     void showCourses();

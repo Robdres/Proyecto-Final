@@ -3,6 +3,9 @@
 
 #include <QMainWindow>
 
+#include "StudentManager.hpp"
+#include "FacultyManager.hpp"
+
 namespace Ui {
 class AdminScreen;
 }
@@ -12,8 +15,9 @@ class AdminScreen : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit AdminScreen(QWidget *parent = nullptr);
+    explicit AdminScreen( QWidget *parent = nullptr);
     ~AdminScreen();
+    StudentManager* sm;
 
 private slots:
     void on_pushButton_clicked();

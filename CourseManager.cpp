@@ -31,7 +31,7 @@ void CourseManager::loadCourses(){
             std::ifstream fileEst;    
             int numberEst;
 
-            std::string pathEstudiantes="./data/"+cursos[i]->getPath();
+            std::string pathEstudiantes="C:\\Users\\josei\\Documents\\GitHub\\build-Proyecto-Final-Desktop_Qt_5_15_2_MinGW_64_bit-Debug\\debug\\data\\"+cursos[i]->getPath();
         
             fileEst.open(pathEstudiantes);
             fileEst>>numberEst;
@@ -49,7 +49,8 @@ void CourseManager::loadCourses(){
                     cursos[i]->addStudentGrade(sm->getStudentByID(BannerIDAux),nota);
                 }
             }else{
-                std::cout<<"Error con el programa"<<std::endl;
+                std::cout<<"Revisar Path en CourseManager"<<std::endl;
+                throw FileNotFound();
             }
             
             fileEst.close();

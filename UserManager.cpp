@@ -13,7 +13,7 @@ User* UserManager::validateCredentials(std::string userName, std::string contras
 	std::deque<Student*> estudiantes=sm->getAllStudents();
 	std::deque<Faculty> profesores=fm->getAllFaculty();
 
-  	for(int i=0;i<estudiantes.size();i++){
+    for(unsigned int i=0;i<estudiantes.size();i++){
 
 		if(estudiantes[i]->getUsuario()==userName and estudiantes[i]->getContrasenia()==contrasenia){
 			
@@ -22,7 +22,7 @@ User* UserManager::validateCredentials(std::string userName, std::string contras
      	}
 
  	}
- 	for(int i=0;i<profesores.size();i++){
+    for(unsigned int i=0;i<profesores.size();i++){
 
  		if(profesores[i].getUsuario()==userName and profesores[i].getContrasenia()==contrasenia){
 
@@ -81,11 +81,11 @@ std::string UserManager::getNewBannerID(){
   	std::deque<Student*> estudiantes= sm->getAllStudents();
   	std::deque<Faculty> profesores= fm->getAllFaculty();
 
-  	for(int i=0;i<estudiantes.size();i++){
+    for(unsigned int i=0;i<estudiantes.size();i++){
   		bannerID.push(stoi(estudiantes[i]->getBannerID()));
   	}
 
-  	for(int i=0;i<profesores.size();i++){
+    for(unsigned int i=0;i<profesores.size();i++){
   		bannerID.push(stoi(profesores[i].getBannerID()));
   	}
 

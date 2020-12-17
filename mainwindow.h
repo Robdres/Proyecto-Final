@@ -2,8 +2,15 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QMessageBox>
+
 #include "segundapantalla.h"
 #include "adminscreen.h"
+#include "CourseManager.hpp"
+#include "StudentManager.hpp"
+#include "FacultyManager.hpp"
+#include "UserManager.hpp"
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
