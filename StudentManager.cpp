@@ -319,8 +319,7 @@ string StudentManager::generateReport(string bannerId){
             for (unsigned int i = 0; i < clases.getSize(); i ++){
                 totalCreditos += clases[i]->getCreditos();
                 sumaValores += clases[i]->getGradeByStudent(bannerId)->getValue() * clases[i]->getCreditos();
-                report = report + clases[i]->getNRC() + "\t" + clases[i]->getGradeByStudent(bannerId)->getLetra()+"\t" + to_string(clases[i]->getGradeByStudent(bannerId)->getNota()) + "\n";
-                cout << clases[i]->to_string();
+                report = report + clases[i]->getNRC() + "\t\t" + clases[i]->getGradeByStudent(bannerId)->getLetra()+"\t" + to_string(clases[i]->getGradeByStudent(bannerId)->getNota()) + "\n";
             }
             if (totalCreditos != 0)
             GPA = sumaValores / totalCreditos;
