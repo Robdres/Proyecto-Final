@@ -158,7 +158,7 @@ void StudentManager::createNewStudent(UserManager* um){
 };
 
 Student* StudentManager::getStudentByID(string BannerID){
-    for(int i = 0; i < estudiantes.size(); i ++){
+    for(size_t i = 0; i < estudiantes.size(); i ++){
         if (estudiantes[i]->getBannerID() == BannerID){
             return estudiantes[i];
         }
