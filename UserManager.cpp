@@ -11,7 +11,7 @@ User* UserManager::validateCredentials(std::string userName, std::string contras
 
     std::cout << "validando credenciales" << std::endl;
 	std::deque<Student*> estudiantes=sm->getAllStudents();
-	std::deque<Faculty> profesores=fm->getAllFaculty();
+    std::deque<Faculty*> profesores=fm->getAllFaculty();
 
     for(unsigned int i=0;i<estudiantes.size();i++){
 
@@ -24,9 +24,9 @@ User* UserManager::validateCredentials(std::string userName, std::string contras
  	}
     for(unsigned int i=0;i<profesores.size();i++){
 
- 		if(profesores[i].getUsuario()==userName and profesores[i].getContrasenia()==contrasenia){
+        if(profesores[i]->getUsuario()==userName and profesores[i]->getContrasenia()==contrasenia){
 
- 			return &profesores[i];
+            return profesores[i];
 
  		}
 
@@ -79,14 +79,14 @@ void UserManager::showUser(User* usuario)
 std::string UserManager::getNewBannerID(){
   	std::priority_queue<int> bannerID;
   	std::deque<Student*> estudiantes= sm->getAllStudents();
-  	std::deque<Faculty> profesores= fm->getAllFaculty();
+    std::deque<Faculty*> profesores= fm->getAllFaculty();
 
     for(unsigned int i=0;i<estudiantes.size();i++){
   		bannerID.push(stoi(estudiantes[i]->getBannerID()));
   	}
 
     for(unsigned int i=0;i<profesores.size();i++){
-  		bannerID.push(stoi(profesores[i].getBannerID()));
+        bannerID.push(stoi(profesores[i]->getBannerID()));
   	}
 
   	int banMax=bannerID.top();

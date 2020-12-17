@@ -11,7 +11,7 @@ class UserManager;
 
 class FacultyManager{
 private:
-    std::deque<Faculty> profesores;
+    std::deque<Faculty*> profesores;
     std::string pathFaculty;
     void loadFaculty();
     void updateFaculty();
@@ -21,7 +21,7 @@ public:
     FacultyManager(){};
     void createNewFaculty(UserManager*);//funciona
     Faculty* getFacultyByID(std::string);//funciona
-    std::deque<Faculty> getAllFaculty();//funciona
+    std::deque<Faculty*> getAllFaculty();//funciona
     void editFaculty();//ya funciona
     void editFaculty(Faculty* );
     void editFaculty(std::string);
