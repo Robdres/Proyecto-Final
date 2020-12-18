@@ -45,17 +45,20 @@ void AdminScreen::on_pushButton_2_clicked()
     //su trabajo
     //es reportar la mejor nota (máximo), la peor nota (mínimo), la nota promedio y
     //la desviación estándar por todos los cursos de ese profesor.
-    FacultyManager fm("C:\\Users\\josei\\Documents\\GitHub\\build-Proyecto-Final-Desktop_Qt_5_15_2_MinGW_64_bit-Debug\\debug\\data\\profesores.txt");
-    StudentManager sm("C:\\Users\\josei\\Documents\\GitHub\\build-Proyecto-Final-Desktop_Qt_5_15_2_MinGW_64_bit-Debug\\debug\\data\\estudiantes_pregrado.txt", "C:\\Users\\josei\\Documents\\GitHub\\build-Proyecto-Final-Desktop_Qt_5_15_2_MinGW_64_bit-Debug\\debug\\data\\estudiantes_posgrado.txt");
-    UserManager(&fm, &sm);
-    CourseManager cm("C:\\Users\\josei\\Documents\\GitHub\\build-Proyecto-Final-Desktop_Qt_5_15_2_MinGW_64_bit-Debug\\debug\\data\\Courses.txt", &sm, &fm);
     try {//intentar encontrar el profesor
         std::string input = ui->lineEdit_2->text().toStdString();
-        std::string report = fm.generateReport(input);
+        std::string report = fm->generateReport(input);
         ui->plainTextEdit->setPlainText(QString::fromStdString(report));
     }  catch (BannerIDNotFound &error) {
         QMessageBox::information(this, tr("ERROR"), tr("No se pudo encontrar el bannerID"));
     }
     ui->lineEdit->clear();
     ui->lineEdit_2->clear();
+}
+
+void AdminScreen::setManagers(UserManager *_um, FacultyManager *_fm, CourseManager *_cm, StudentManager *_sm){
+    this->um = _um;
+    this->fm = _fm;
+    this->cm = _cm;
+    this->sm = _sm;
 }

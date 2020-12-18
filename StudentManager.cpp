@@ -316,7 +316,6 @@ string StudentManager::generateReport(string bannerId){
         if (e->getBannerID() == bannerId){
             report = report + e->getNombre() + " " + e->getApellido() + "\n";
             ArrayList<Course*> clases = e->getClases();
-            cout << clases.getSize() << endl;
             for (unsigned int i = 0; i < clases.getSize(); i ++){
                 totalCreditos += clases[i]->getCreditos();
                 sumaValores += clases[i]->getGradeByStudent(bannerId)->getValue() * clases[i]->getCreditos();
@@ -328,7 +327,6 @@ string StudentManager::generateReport(string bannerId){
             report += "GPA: " + to_string(GPA);
             return report;
         }
-
     }
     throw BannerIDNotFound();
 }

@@ -24,6 +24,11 @@ public:
     ~MainWindow();
     SegundaPantalla sp;
     AdminScreen as;
+    FacultyManager *fm;
+    StudentManager *sm;
+    CourseManager *cm;
+    UserManager *um;
+    void initManagers();
 private slots:
     void on_pushButton_clicked();
 

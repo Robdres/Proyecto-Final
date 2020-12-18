@@ -22,6 +22,11 @@ public:
     explicit SegundaPantalla(QWidget *parent = nullptr);
     ~SegundaPantalla();
     void startSystem(std::string , std::string);//se le pasa las credenciales para intentar iniciar sesion
+    CourseManager *cm;
+    FacultyManager *fm;
+    StudentManager *sm;
+    UserManager *um;
+    void setManagers(UserManager *_um, FacultyManager *_fm, CourseManager *_cm, StudentManager *_sm);
 private:
     Ui::SegundaPantalla *ui;
 };

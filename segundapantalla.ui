@@ -85,8 +85,11 @@
     </property>
     <property name="font">
      <font>
-      <pointsize>11</pointsize>
+      <pointsize>10</pointsize>
      </font>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
     </property>
    </widget>
   </widget>
