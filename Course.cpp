@@ -124,3 +124,14 @@ float Course::getDesvest(){
     float desvest = sqrt(sumaCuadrados/notas.size());
     return desvest;
 }
+
+float Course::getPromedio(){
+    float suma = 0;
+    float promedio = 0;
+    for (auto grade : notas){
+        suma += grade->getNota();
+    }
+    if (notas.size() != 0)
+    promedio = suma / notas.size();
+    return promedio;
+}

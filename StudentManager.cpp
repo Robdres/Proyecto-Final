@@ -32,7 +32,7 @@ void StudentManager::loadUnderGrads(){
             Proxy proxyAux(pnombreAux,papellidoAux,pemailAux,ptelefAux);
 
 
-            UnderGraduateStudent* newUnder = new UnderGraduateStudent(bannerIDAux,nombreAux,apellidoAux,usuarioAux,contraseniaAux,carreraAux,proxyAux);
+            UnderGraduateStudent* newUnder = new UnderGraduateStudent(bannerIDAux,nombreAux,apellidoAux,contraseniaAux,usuarioAux,carreraAux,proxyAux);
             Student *Stptr(&*newUnder);
             estudiantes.push_back(Stptr);
         }

@@ -56,7 +56,7 @@ public:
     int getNotaMax();
     int getNotaMin();
     float getDesvest();
-   
+    float getPromedio();
 };
 
 #endif /* Course_hpp */

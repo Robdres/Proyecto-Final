@@ -182,11 +182,11 @@ std::string FacultyManager::generateReport(std::string BannerId){
     for (auto prof : profesores){
         if (prof->getBannerID() == BannerId){
             report += "Profesor:\t" + prof->getNombre() + " "  + prof->getApellido() + "\t" +prof->getBannerID() + "\n";
-            report += "Información sobre los cursos:\n\n";
-            report += "NRC\tNotaMax\tNotaMin\tDesvest\n";
+            report += "\nInformación sobre los cursos:\n";
+            report += "NRC\tMax\tMin\tMedia\tDesvest\n";
             ArrayList<Course* > cursos = prof->getCursos();
             for (unsigned int i = 0; i < cursos.getSize(); i ++){
-                report += cursos[i]->getNRC() + "\t" + to_string(cursos[i]->getNotaMax())+ "\t" + to_string(cursos[i]->getNotaMin())+ '\t' + to_string(cursos[i]->getDesvest()) + "\n";
+                report += cursos[i]->getNRC() + "\t" + to_string(cursos[i]->getNotaMax())+ "\t" + to_string(cursos[i]->getNotaMin())+ '\t' + to_string(cursos[i]->getPromedio()) + '\t' + to_string(cursos[i]->getDesvest()) + "\n";
 
             }
             return report;
