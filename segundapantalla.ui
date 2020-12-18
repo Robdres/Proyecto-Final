@@ -83,6 +83,11 @@
       <height>361</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

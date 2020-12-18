@@ -14,12 +14,11 @@ SegundaPantalla::~SegundaPantalla()
 }
 
 void SegundaPantalla::startSystem(std::string usuario, std::string contrasenia){
-    FacultyManager fm("C:\\Users\\josei\\Documents\\GitHub\\build-Proyecto-Final-Desktop_Qt_5_15_2_MinGW_64_bit-Debug\\debug\\data\\profesores.txt");
-    StudentManager sm("C:\\Users\\josei\\Documents\\GitHub\\build-Proyecto-Final-Desktop_Qt_5_15_2_MinGW_64_bit-Debug\\debug\\data\\estudiantes_pregrado.txt", "C:\\Users\\josei\\Documents\\GitHub\\build-Proyecto-Final-Desktop_Qt_5_15_2_MinGW_64_bit-Debug\\debug\\data\\estudiantes_posgrado.txt");
-    UserManager um(&fm, &sm);
-    CourseManager cm("C:\\Users\\josei\\Documents\\GitHub\\build-Proyecto-Final-Desktop_Qt_5_15_2_MinGW_64_bit-Debug\\debug\\data\\Courses.txt", &sm, &fm);
-
     try {
+        FacultyManager fm("C:\\Users\\josei\\Documents\\GitHub\\build-Proyecto-Final-Desktop_Qt_5_15_2_MinGW_64_bit-Debug\\debug\\data\\profesores.txt");
+        StudentManager sm("C:\\Users\\josei\\Documents\\GitHub\\build-Proyecto-Final-Desktop_Qt_5_15_2_MinGW_64_bit-Debug\\debug\\data\\estudiantes_pregrado.txt", "C:\\Users\\josei\\Documents\\GitHub\\build-Proyecto-Final-Desktop_Qt_5_15_2_MinGW_64_bit-Debug\\debug\\data\\estudiantes_posgrado.txt");
+        UserManager um(&fm, &sm);
+        CourseManager cm("C:\\Users\\josei\\Documents\\GitHub\\build-Proyecto-Final-Desktop_Qt_5_15_2_MinGW_64_bit-Debug\\debug\\data\\Courses.txt", &sm, &fm);
         User *exito = um.validateCredentials(usuario, contrasenia);
         //un usuario puede ser undergrad, grad o profesor. tengo que intentar con los tres.
         UnderGraduateStudent * siUndergrad = dynamic_cast<UnderGraduateStudent*>(exito);
@@ -40,11 +39,12 @@ void SegundaPantalla::startSystem(std::string usuario, std::string contrasenia){
             this->ui->plainTextEdit->setPlainText(QString::fromStdString(sm.generateReport(siGrad->getBannerID())));
         }
         if (siProfesor){
-            this->ui->label->setText(QString::fromStdString(siProfesor->getNombre() + " " + siProfesor->getApellido() + ": Profesor"));
+            this->ui->label->setText(QString::fromStdString(siProfesor->getNombre() + " " + siProfesor->getApellido() + ": Posgrado"));
+            this->ui->label_2->setText(QString::fromStdString("Profesor\t Carrera: " + siProfesor->getCarrera()));
+            this->ui->label_3->setText(QString::fromStdString(siProfesor->getBannerID()));
+            this->ui->plainTextEdit->setPlainText(QString::fromStdString(fm.generateReport(siProfesor->getBannerID())));
         }
     }  catch (FileNotFound &error) {
         QMessageBox::information(this, tr("ERROR"), tr("No se pudieron encontrar todos los archivos. Revisar el path"));
-    } catch (InvalidCredentials &error) {
-        QMessageBox::information(this, tr("ERROR"), tr("Las credenciales no son validas"));
     }
 }

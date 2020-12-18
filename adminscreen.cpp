@@ -36,6 +36,8 @@ void AdminScreen::on_pushButton_clicked()
     }  catch (BannerIDNotFound &error) {
         QMessageBox::information(this, tr("ERROR"), tr("No se pudo encontrar el bannerID"));
     }
+    ui->lineEdit->clear();
+    ui->lineEdit_2->clear();
 }
 
 void AdminScreen::on_pushButton_2_clicked()
@@ -43,7 +45,6 @@ void AdminScreen::on_pushButton_2_clicked()
     //su trabajo
     //es reportar la mejor nota (máximo), la peor nota (mínimo), la nota promedio y
     //la desviación estándar por todos los cursos de ese profesor.
-    //QString ProfId = ui->lineEdit_2->text();
     FacultyManager fm("C:\\Users\\josei\\Documents\\GitHub\\build-Proyecto-Final-Desktop_Qt_5_15_2_MinGW_64_bit-Debug\\debug\\data\\profesores.txt");
     StudentManager sm("C:\\Users\\josei\\Documents\\GitHub\\build-Proyecto-Final-Desktop_Qt_5_15_2_MinGW_64_bit-Debug\\debug\\data\\estudiantes_pregrado.txt", "C:\\Users\\josei\\Documents\\GitHub\\build-Proyecto-Final-Desktop_Qt_5_15_2_MinGW_64_bit-Debug\\debug\\data\\estudiantes_posgrado.txt");
     UserManager(&fm, &sm);
@@ -55,4 +56,6 @@ void AdminScreen::on_pushButton_2_clicked()
     }  catch (BannerIDNotFound &error) {
         QMessageBox::information(this, tr("ERROR"), tr("No se pudo encontrar el bannerID"));
     }
+    ui->lineEdit->clear();
+    ui->lineEdit_2->clear();
 }
