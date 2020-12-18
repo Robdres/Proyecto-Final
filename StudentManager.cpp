@@ -309,8 +309,8 @@ void StudentManager::showStudent(Student* estud) {//para que no se le dañe lo q
 
 string StudentManager::generateReport(string bannerId){
     string report = "";
-    int totalCreditos{0};
-    int sumaValores{0};
+    float totalCreditos{0};
+    float sumaValores{0};
     float GPA{0};
     for (auto e : estudiantes){//como usé deque puedo usar esta sintaxis cool
         if (e->getBannerID() == bannerId){
