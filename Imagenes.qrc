@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/new/prefix1">
         <file>Escudo_usfq-01_preview_rev_1.png</file>
+        <file>Copia de escudo_usfq-01_preview_rev_1.png</file>
     </qresource>
 </RCC>
