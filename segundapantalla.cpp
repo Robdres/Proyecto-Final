@@ -24,7 +24,6 @@ void SegundaPantalla::startSystem(std::string usuario, std::string contrasenia){
             this->ui->label->setText(QString::fromStdString(siUndergrad->getNombre() + " " + siUndergrad->getApellido() + ": Pregrado"));
             this->ui->label_2->setText(QString::fromStdString("Representante: " + siUndergrad->getRepresentante().getNombre() + " " + siUndergrad->getRepresentante().getApellido()));
             this->ui->label_3->setText(QString::fromStdString("BannerID:\t" + siUndergrad->getBannerID()));
-            QMessageBox::information(this, tr("ERROR"), tr("No se pudieron encontrar todos los archivos. Revisar el path"));
             std::string report = sm->generateReport(siUndergrad->getBannerID());
             this->ui->plainTextEdit->setPlainText(QString::fromStdString(report));
         }

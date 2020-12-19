@@ -29,6 +29,7 @@ void MainWindow::on_pushButton_clicked()
         try {
             sp.setManagers(um, fm, cm, sm);
             sp.startSystem(ui->plainTextEdit->toPlainText().toStdString(), ui->plainTextEdit_2->toPlainText().toStdString());
+            //va a lanzar error si las credenciales no son válidas
             sp.show();
             ui->plainTextEdit->clear();
             ui->plainTextEdit_2->clear();
@@ -48,6 +49,6 @@ void MainWindow::initManagers(){
         um = new UserManager(fm, sm);
         }
         catch(FileNotFound &error){
-            QMessageBox::information(this, tr("ERROR"), tr("Credenciales Inválidas"));
+            QMessageBox::information(this, tr("ERROR"), tr("No se pudieron encontrar algunos archivos. Revise el path."));
         }
 }
